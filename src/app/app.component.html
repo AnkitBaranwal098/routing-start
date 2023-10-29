@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="active"><a href="#">Home</a></li>
+        <li role="presentation"><a href="#">Servers</a></li>
+        <li role="presentation"><a href="#">Users</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
+      <!-- <app-home></app-home> -->
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>
+
+<!-- Now we want some place to render our component when a specific route is reached for that we need to inform Angular about that place using a spl directive in place of component selector which is <router-outlet></router-outlet>.Now with this it simply marks in our document where we want the Angular Router to load the component of the currently selected route -->
