@@ -1,2 +1,7 @@
 <p>User with ID {{user.id}} loaded.</p>
 <p>User name is {{user.name}}</p>
+<hr />
+
+<!-- This will now construct a route which is /users/10/Anna -->
+<!-- The problem which we are trying to solve is suppose we pass the parameters :id/:name as 1/Ankit and now we are on the page /users/10/Ankit and there we have the below link "Load Anna" but when we click on it even when the if the data is passed to the url the page is not updated with the new updated values.This is because we load the earlier data with the snapshot property.Angular finds the appModule finds the required route and loads the data by accessing this snapshot .That only happens when we are not on that page but in this case when we are on the user page and just passing the new parameters to the url.So Angular will not instantiate the component to minimise the rerender.Angular does not know if the data is changed -->
+<a [routerLink]="['/users',10,'Anna']">Load Anna</a>
