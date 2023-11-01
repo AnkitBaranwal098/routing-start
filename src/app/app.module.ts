@@ -26,13 +26,18 @@ import {Routes, RouterModule} from "@angular/router";
 
 // Now that we have the path we need to tell Angular that once this path is reached a certain component should be loaded which form the page to be loaded
 
-
+// Child Routing
+// To add child routes we need to add another key to the js object which is "children" now this key takes an array of similar js object with path being nested 
+// Now in the next step after we have created child routes we will go to the components which become the parent routes like "/users" and "/servers" there we will add router-outlet component like the way we did in app.component.html
 const appRoutes:Routes = [
   {path: '', component: HomeComponent},
-  {path: 'users', component: UsersComponent},
-  {path: 'users/:id/:name', component: UserComponent},
-  {path: 'servers', component: ServersComponent},
-  {path: 'servers/:id/edit', component: EditServerComponent}
+  {path: 'users', component: UsersComponent,children:[
+    {path: ':id/:name', component: UserComponent},
+  ]},
+  {path: 'servers', component: ServersComponent,children:[
+    {path: ':id', component: ServerComponent},
+    {path: ':id/edit', component: EditServerComponent}
+  ]},
 ]
 
 // Now we the above steps Angular will not do anything just ignore the routes so we need to register these routes in our appRoutes.This we do by adding a new import in the imports array which is RouterModule to be imported from @angular/router.Now we are adding the routing functionality to our app but still our app is not registered for that we need to use a functipn of RouterModule which is forRoot() that allows us to register some routes for our main application,It takes the appRoutes as argument.Now Angular knows our routes.

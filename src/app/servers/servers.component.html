@@ -5,8 +5,8 @@
       <!-- And on queryParams we pass js object in which we define the key value pairs of the parameters we want to edit we can add multiple key value pairs which in the url will be separated by &keyword -->
       <!-- we also have the fragment property as we can have only one fragment -->
       <a
-        [routerLink]="['/servers', 5, 'edit']"
-        [queryParams] = "{allowEdit: '1'}"
+        [routerLink]="['/servers', server.id]"
+        [queryParams] = "{allowEdit: server.id===3 ? '1' : '0'}"
         fragment = "Loading"
         href="#"
         class="list-group-item"
@@ -17,9 +17,10 @@
   </div>
   <div class="col-xs-12 col-sm-4">
     <!-- <button class="btn btn-primary" (click)="reloadPage()">Reload Page</button> -->
-    <app-edit-server></app-edit-server>
+    <!-- <app-edit-server></app-edit-server>
     <hr>
-    <app-server></app-server>
+    <app-server></app-server> -->
+    <router-outlet></router-outlet>
   </div>
 </div>
 

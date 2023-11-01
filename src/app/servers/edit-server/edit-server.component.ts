@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { ServersService } from '../servers.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Params } from '@angular/router';
 
 @Component({
   selector: 'app-edit-server',
@@ -12,7 +12,7 @@ export class EditServerComponent implements OnInit {
   server: {id: number, name: string, status: string};
   serverName = '';
   serverStatus = '';
-
+  allowEdit = false;
   constructor(private serversService: ServersService, private route:ActivatedRoute) { }
 
   ngOnInit() {
@@ -26,7 +26,11 @@ export class EditServerComponent implements OnInit {
 
     // Just like we have params as observables similarly we have queryParams and fragment as observables
 
-    this.route.queryParams.subscribe()
+    this.route.queryParams.subscribe(
+      (queryParams:Params)=>{
+        this.allowEdit = queryParams['allowEdit']==='1' ? true:false;
+      }
+    )
     this.route.fragment.subscribe();
 
     this.server = this.serversService.getServer(1);
