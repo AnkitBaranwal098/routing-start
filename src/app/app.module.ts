@@ -31,7 +31,8 @@ const appRoutes:Routes = [
   {path: '', component: HomeComponent},
   {path: 'users', component: UsersComponent},
   {path: 'users/:id/:name', component: UserComponent},
-  {path: 'servers', component: ServersComponent}
+  {path: 'servers', component: ServersComponent},
+  {path: 'servers/:id/edit', component: EditServerComponent}
 ]
 
 // Now we the above steps Angular will not do anything just ignore the routes so we need to register these routes in our appRoutes.This we do by adding a new import in the imports array which is RouterModule to be imported from @angular/router.Now we are adding the routing functionality to our app but still our app is not registered for that we need to use a functipn of RouterModule which is forRoot() that allows us to register some routes for our main application,It takes the appRoutes as argument.Now Angular knows our routes.
