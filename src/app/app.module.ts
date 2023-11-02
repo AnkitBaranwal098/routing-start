@@ -12,6 +12,8 @@ import { EditServerComponent } from './servers/edit-server/edit-server.component
 import { ServerComponent } from './servers/server/server.component';
 import { ServersService } from './servers/servers.service';
 import { AppRoutingModule } from './app-routing.module';
+import { AuthServce } from './auth.service';
+import { AuthGuard } from './auth-guard.service';
 
 // To inform Angular about the routes our application has we define all routes in app.module.ts
 // Above the @NgModule decorator we write appRoutes of Routes type which is imported from @angular/router
@@ -49,7 +51,7 @@ import { AppRoutingModule } from './app-routing.module';
     FormsModule,
     AppRoutingModule
   ],
-  providers: [ServersService],
+  providers: [ServersService, AuthServce, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
